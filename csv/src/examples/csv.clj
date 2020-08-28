@@ -10,6 +10,7 @@
 ;; Other separator
 (csv/read-csv "this;is\na;test" :separator \;)
 
+;; Data from https://www.kaggle.com/agirlcoding/all-space-missions-from-1957
 (def space-missions
   (with-open [reader (io/reader "space.csv")]
     (doall
@@ -104,7 +105,27 @@
 (def clean-missions
   (map #(zipmap clean-header (rest %)) (rest space-missions)))
 
+(count clean-missions)
 
+(count (filter #(= "SpaceX" %) (map :company-name clean-missions)))
+
+(defn mission-count
+  [missions company-name]
+  (count (filter #(= company-name %) (map :company-name missions))))
+
+(def mission-count-my-missions (partial mission-count clean-missions))
+
+(def space-x-count (fn [missions] (mission-count missions "SpaceX")))
+
+(def test-x
+  (filter #(not= "Success" (:status-mission %)) clean-missions))
+
+(defn count-of-status
+  [status]
+  (sort-by
+   second
+   (frequencies
+    (map :company-name (get (group-by :status-mission clean-missions) status)))))
 
 (defn -main
   "I don't do a whole lot ... yet."
