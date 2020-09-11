@@ -32,11 +32,11 @@
 @users-db
 
 
-(defn add-user
+(defn add-user!
   [db user]
   (swap! db conj user))
 
-(defn remove-user
+(defn remove-user!
   [db e-mail]
   (swap!
    db
@@ -44,9 +44,9 @@
      (filterv (fn [user] (not= (:user/e-mail user) e-mail)) current))))
 
 (comment
-  (add-user users-db (make-user "a@b.c" "the name"))
+  (add-user! users-db (make-user "a@b.c" "the name"))
   
-  (remove-user users-db "a@b.c")
+  (remove-user! users-db "a@b.c")
 
   )
 
@@ -64,7 +64,7 @@
 ;; Encore
 
 ;; Reflect on how much nicer this would be if we had an associative data structure (as the hash-maps from last session)
-(defn alter-user
+(defn alter-user!
   [db e-mail username]
   (swap!
    db
@@ -77,5 +77,5 @@
          current)))))
 
 (comment
-  (alter-user users-db "bad@ass.nu" "Roffe")
+  (alter-user! users-db "bad@ass.nu" "Roffe")
   )
