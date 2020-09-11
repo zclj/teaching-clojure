@@ -13,7 +13,9 @@ To get started, check out the official [Getting Started Guide](https://www.cloju
 
 ### Books
 
-- [Clojure for the Brave and True](https://www.braveclojure.com/) (free online)
+- [Clojure for the Brave and True](https://www.braveclojure.com/) - free online
+
+- [Clojure Cookbook](https://github.com/clojure-cookbook/clojure-cookbook) - All recipes available free online
 
 ### Community
 
