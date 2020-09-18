@@ -1,0 +1,4 @@
+{:deps {org.clojure/clojure {:mvn/version "1.10.1"}
+        org.clojure/spec.alpha {:mvn/version "0.2.187"}
+        org.clojure/test.check {:mvn/version "0.9.0"}}
+ :paths ["src/clj"]}

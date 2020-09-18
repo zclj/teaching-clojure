@@ -51,11 +51,14 @@
                  :phone {:home "555-678"}}])
 
 ;; get Joakims street
-(get-in (first (filter #(= "jools@foobar.com" (:e-mail %)) persons-3)) 
+(get-in (first (filter (fn [p] (= "jools@foobar.com" (:e-mail p))) persons-3)) 
         [:address :street])
 
 ;; normalize persons-3
-(def persons-3n (reduce (fn [acc p] (assoc acc (:e-mail p) p)) {} persons-3))
+(def persons-3n 
+  (reduce (fn [acc p] (assoc acc (:e-mail p) p)) 
+          {}
+          persons-3))
 
 ;; get Joakims street
 (get-in persons-3n ["jools@foobar.com" :address :street])
@@ -83,4 +86,5 @@
 (update-in persons-3n ["olot@foobar.com" :phone] #(dissoc % :iphone))
 
 ;; we can also make use of variadic arguments and fns as first class constructs
-(update-in persons-3n ["olot@foobar.com" :phone] dissoc :iphone)
+(def updated-persons
+  (update-in persons-3n ["olot@foobar.com" :phone] dissoc :iphone))
