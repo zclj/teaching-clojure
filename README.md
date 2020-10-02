@@ -29,3 +29,8 @@ To get started, check out the official [Getting Started Guide](https://www.cloju
 - [Malli](https://github.com/metosin/malli) - Data-centric alternative to Clojure.Spec
 
 - [What spec is](https://www.pixelated-noise.com/blog/2020/09/10/what-spec-is/) - Blog post
+
+### `core.async`
+
+- [Clojure core.async Channels](https://clojure.org/news/2013/06/28/clojure-clore-async-channels)
+- [Go Block Best Practices](https://www.clojure.org/guides/core_async_go)
