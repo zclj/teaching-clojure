@@ -5,23 +5,30 @@
 ;; for custom polymorphism
 
 (defmulti greet
-  (fn [opts _]
-    (:lang opts)))
+  (fn [_ & {:keys [lang]}]
+    lang))
 
 (defmethod greet :en-us
-  [_ name]
+  [name & _]
   (str "Howdy " name "!"))
 
 (defmethod greet :se-sv
-  [_ name]
+  [name & _]
   (str "Hej " name "!"))
 
-(greet {:lang :se-sv} "Lennart")
-(greet {:lang :en-us} "Lennart")
+(greet "Lennart" :lang :se-sv)
+(greet "Lennart" :lang :en-us)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; default function
+;; 
+
+(greet "Lennart")
+(greet "Lennart" :lang :se-fi)
 
 (defmethod greet :default
-  [_ name]
+  [name & _]
   (str "Hello " name "!"))
 
-(greet {} "Lennart")
-(greet {:lang :se-fi} "Lennart")
+(greet "Lennart")
+(greet "Lennart" :lang :se-fi)
