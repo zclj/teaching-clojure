@@ -3,6 +3,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'multimethods' is an open system
 ;; for custom polymorphism
+;; (one of Clojures' solution to https://en.wikipedia.org/wiki/Expression_problem)
 
 (defmulti greet
   (fn [_ & {:keys [lang]}]
