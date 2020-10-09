@@ -32,7 +32,7 @@
 
 (def large-list '(1 2 3 4 5 6 7 8 9))
 
-;; if seequence is to small, values are nil
+;; if sequence is to small, values are nil
 (let [[a b c d e] small-list]
   (vector a b c d e))
 
@@ -106,6 +106,10 @@
 (let [{{:keys [gizmo]} :baz} item]
   (prn gizmo))
 
+(let [{:keys [foo bar baz]} item
+      {:keys [gizmo]}       baz]
+  [foo bar gizmo])
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; keyword args
 ;; 
@@ -146,10 +150,11 @@
 (my-fn3 1 2 :verbose true)
 
 (defn my-fn4
-  [x y & {:keys [debug verbose]}]
+  [x y & {:keys [debug verbose] :as rest}]
   (when debug (prn "debug logging"))
   (when verbose (prn "verbose logging"))
-  (+ x y))
+  (println (+ x y))
+  rest)
 
 (my-fn4 1 2)
 (my-fn4 1 2 :debug true)
