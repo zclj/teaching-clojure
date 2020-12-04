@@ -22,6 +22,10 @@ To get started, check out the official [Getting Started Guide](https://www.cloju
 - [Clojure Toolbox](https://www.clojure-toolbox.com/) - Catalog of Clojure Libraries
 - [Redit Clojure](https://www.reddit.com/r/Clojure/)
 
+### Tooling
+
+- [Practicalli deps.edn](https://github.com/practicalli/clojure-deps-edn) - Inspiration for tool integrations in deps.edn
+
 ### Specifications
 
 - [Spec Official Guide](https://clojure.org/guides/spec)
